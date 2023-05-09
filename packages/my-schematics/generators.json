@@ -4,6 +4,11 @@
       "factory": "./src/generators/my-generator/generator",
       "schema": "./src/generators/my-generator/schema.json",
       "description": "my-generator generator"
+    },
+    "service-generator": {
+      "factory": "./src/generators/service-generator/generator",
+      "schema": "./src/generators/service-generator/schema.json",
+      "description": "service-generator generator"
     }
   }
 }
