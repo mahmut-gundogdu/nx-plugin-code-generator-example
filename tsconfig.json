@@ -19,7 +19,10 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@contoso-app/my-schematics": ["packages/my-schematics/src/index.ts"]
+    }
   },
   "files": [],
   "include": [],

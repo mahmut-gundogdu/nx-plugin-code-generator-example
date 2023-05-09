@@ -1,0 +1,66 @@
+{
+  "name": "my-schematics",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/my-schematics/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/my-schematics",
+        "main": "packages/my-schematics/src/index.ts",
+        "tsConfig": "packages/my-schematics/tsconfig.lib.json",
+        "assets": [
+          "packages/my-schematics/*.md",
+          {
+            "input": "./packages/my-schematics/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/my-schematics/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/my-schematics",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/my-schematics",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/my-schematics/**/*.ts",
+          "packages/my-schematics/package.json",
+          "packages/my-schematics/generators.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/my-schematics/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
